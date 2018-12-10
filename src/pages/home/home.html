@@ -4,6 +4,13 @@
     <ion-title>
       {{contacts}}
     </ion-title>
+    <ion-buttons end >
+      <button ion-button (click)=addContact()>
+        <ion-icon name="add">
+            <ion-badge color ="danger"> {{contactsArray.length}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons>
     <img [src]="contactsImg" alt="my ContactImg"   (click)="aboutContacts()">
   </ion-navbar>
 </ion-header>

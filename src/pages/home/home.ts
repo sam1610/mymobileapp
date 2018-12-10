@@ -21,4 +21,7 @@ export class HomePage {
   aboutContacts(){
     this.navCtrl.push(AboutPage);
   }
+  addContact(){
+    
+  }
 }
