@@ -1,7 +1,7 @@
 // home.ts
 import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, reorderArray } from 'ionic-angular';
 import { DetailsPage } from '../details/details';
 
 @Component({
@@ -9,6 +9,7 @@ import { DetailsPage } from '../details/details';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  reorderT=true;
  contacts =" Constacts Application ";
  contactsImg="../../assets/imgs/contactsImg.jpg";
  userName= "";
@@ -26,6 +27,12 @@ export class HomePage {
   detailContact(item , i ){
     console.log(item , i );
     this.navCtrl.push(DetailsPage, {cte:item})
+  }
+  toggle(){
+    this.reorderT=!this.reorderT;
+  }
+  Reorder($event){
+    reorderArray(this.contactsArray, $event)
   }
   addContact(){
     let addCte=this.alertCtrl.create({

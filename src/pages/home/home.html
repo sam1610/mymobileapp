@@ -2,22 +2,32 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{contacts}}
+     
+      {{contacts}} 
+      <!-- toggle button to activate items reorder -->
+       <ion-icon name="flash" large color="secondary" (click)="toggle()" *ngIf="reorderT" > </ion-icon>
+    <ion-icon name="flash" large color="secondary" (click)="toggle()" *ngIf="!reorderT" > </ion-icon>
     </ion-title>
     <ion-buttons end  >
       <button  ion-button (click)=addContact()>
         <ion-icon  name="add" >
             <ion-badge color ="danger"> {{contactsArray.length}}</ion-badge>
         </ion-icon>
-      </button>
+
+      </button> 
+    
     </ion-buttons>
+    
     <img [src]="contactsImg" alt="my ContactImg"   (click)="aboutContacts()">
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-<ion-list>
-    <ion-item *ngFor="let item of contactsArray ; let i=index" (click)="detailContact(item, i)"  > 
+  <!--  Reorder function activated -->
+<ion-list [reorder]="reorderT"  (ionItemReorder)="Reorder($event)">
+<!-- looping through contactsArray item  -->
+  <ion-item *ngFor="let item of contactsArray ; let i=index" (click)="detailContact(item, i)"  > 
+    <!-- display  Contact Name -->
         {{item.Name}}</ion-item>
  
 </ion-list>
