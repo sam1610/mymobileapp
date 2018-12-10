@@ -2,4 +2,12 @@ page-home {
 img{
     width:50px;
 }
+.inp{
+    border:solid 2px gray;    
+    margin: 20px 5px;
+    outline:solid 10px silver;
+}
+.inp:focus{
+    outline:solid 10px red;
+}
 }
