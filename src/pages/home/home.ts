@@ -2,6 +2,7 @@
 import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
+import { DetailsPage } from '../details/details';
 
 @Component({
   selector: 'page-home',
@@ -23,7 +24,8 @@ export class HomePage {
     this.navCtrl.push(AboutPage);
   }
   detailContact(item , i ){
-    console.log(item , i )
+    console.log(item , i );
+    this.navCtrl.push(DetailsPage, {cte:item})
   }
   addContact(){
     let addCte=this.alertCtrl.create({
@@ -41,7 +43,7 @@ export class HomePage {
           text:"Add",
           handler:(newContact)=>{
             this.contactsArray.push(
-              {id:this.contactsArray.length,
+              {id:this.contactsArray.length+1,
               "Name":newContact.contactEntry}
             )
           }
