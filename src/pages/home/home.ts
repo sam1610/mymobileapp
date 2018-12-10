@@ -1,7 +1,7 @@
 // home.ts
 import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -16,12 +16,35 @@ export class HomePage {
   {Name:"samir", id:2},
   {Name:"Ali", id:3}
  ];
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+    private alertCtrl:AlertController) {
   }
   aboutContacts(){
     this.navCtrl.push(AboutPage);
   }
   addContact(){
-    
+    let addCte=this.alertCtrl.create({
+      title:"add Contact",
+      message :"Enter a New Contact Here",
+      inputs:[
+        {type:"text",
+        name:"contactEntry"}
+      ],
+      buttons:[
+        {
+          text:"Cancel"
+        },
+        {
+          text:"Add",
+          handler:(newContact)=>{
+            this.contactsArray.push(
+              {id:this.contactsArray.length,
+              "Name":newContact.contactEntry}
+            )
+          }
+        }
+      ]
+    });
+    addCte.present();
   }
 }
