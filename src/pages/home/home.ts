@@ -1,3 +1,4 @@
+import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -11,5 +12,7 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
-
+  aboutContacts(){
+    this.navCtrl.push(AboutPage);
+  }
 }
