@@ -7,6 +7,7 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
  contacts =" Constacts Application ";
+ contactsImg="../../assets/imgs/contactsImg.jpg";
   constructor(public navCtrl: NavController) {
 
   }
