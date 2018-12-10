@@ -22,6 +22,9 @@ export class HomePage {
   aboutContacts(){
     this.navCtrl.push(AboutPage);
   }
+  detailContact(item , i ){
+    console.log(item , i )
+  }
   addContact(){
     let addCte=this.alertCtrl.create({
       title:"add Contact",

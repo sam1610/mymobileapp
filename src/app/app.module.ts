@@ -1,3 +1,4 @@
+import { DetailsPage } from './../pages/details/details';
 import { AboutPage } from './../pages/about/about';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -11,7 +12,7 @@ import { HomePage } from '../pages/home/home';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage, AboutPage
+    HomePage, AboutPage, DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -20,7 +21,7 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage, AboutPage
+    HomePage, AboutPage, DetailsPage
   ],
   providers: [
     StatusBar,
