@@ -26,9 +26,12 @@
   <!--  Reorder function activated -->
 <ion-list [reorder]="reorderT"  (ionItemReorder)="Reorder($event)">
 <!-- looping through contactsArray item  -->
-  <ion-item *ngFor="let item of contactsArray ; let i=index" (click)="detailContact(item, i)"  > 
+  <ion-item-sliding *ngFor="let item of contactsArray ; let i=index" (click)="detailContact(item, i)"  > 
     <!-- display  Contact Name -->
-        {{item.Name}}</ion-item>
- 
+        <ion-item>{{item.Name}}</ion-item>
+        <ion-item-options side="right">
+          <ion-icon name="trash" color="danger" (click)="deleteContact(i)"></ion-icon>
+        </ion-item-options>
+      </ion-item-sliding>
 </ion-list>
 </ion-content>

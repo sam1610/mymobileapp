@@ -28,6 +28,9 @@ export class HomePage {
     console.log(item , i );
     this.navCtrl.push(DetailsPage, {cte:item})
   }
+  deleteContact(i){
+    this.contactsArray.splice(i , 1);
+  }
   toggle(){
     this.reorderT=!this.reorderT;
   }
