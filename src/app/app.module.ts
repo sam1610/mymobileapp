@@ -1,3 +1,4 @@
+import { ServiceCountries } from './../services/service-countries';
 import { DetailsPage } from './../pages/details/details';
 import { AboutPage } from './../pages/about/about';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,8 +26,8 @@ import { HomePage } from '../pages/home/home';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    SplashScreen,ServiceCountries,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}

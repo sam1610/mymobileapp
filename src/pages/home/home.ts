@@ -1,6 +1,8 @@
+import { ServiceCountries } from './../../services/service-countries';
+import { Countries } from './../../shared/Countries';
 // home.ts
 import { AboutPage } from './../about/about';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
 import { DetailsPage } from '../details/details';
 
@@ -8,19 +10,22 @@ import { DetailsPage } from '../details/details';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage  implements OnInit{
   reorderT=true;
  contacts =" Constacts Application ";
  contactsImg="../../assets/imgs/contactsImg.jpg";
  userName= "";
- contactsArray=[
-  {Name:"Ahmed", id:1},
-  {Name:"samir", id:2},
-  {Name:"Ali", id:3}
- ];
+ countries :Countries[];
   constructor(public navCtrl: NavController,
     private alertCtrl:AlertController, 
-    private toasCtrl:ToastController) {
+    private toasCtrl:ToastController, 
+    private countryService:ServiceCountries) {
+      
+  }
+
+  ngOnInit(){
+
+    this.
   }
   aboutContacts(){
     this.navCtrl.push(AboutPage);
@@ -30,7 +35,7 @@ export class HomePage {
     this.navCtrl.push(DetailsPage, {cte:item})
   }
   deleteContact(item, i){
-    this.contactsArray.splice(i , 1);
+    this.countries.splice(i , 1);
     let toast=this.toasCtrl.create({
       message: item.Name +" Contact Deleted",
       duration :2000
@@ -41,7 +46,7 @@ export class HomePage {
     this.reorderT=!this.reorderT;
   }
   Reorder($event){
-    reorderArray(this.contactsArray, $event)
+    reorderArray(this.countries, $event)
   }
   addContact(){
     let addCte=this.alertCtrl.create({
@@ -49,7 +54,9 @@ export class HomePage {
       message :"Enter a New Contact Here",
       inputs:[
         {type:"text",
-        name:"contactEntry"}
+        name:"City"}, 
+        {type:"text",
+        name:"Country"}
       ],
       buttons:[
         {
@@ -58,9 +65,9 @@ export class HomePage {
         {
           text:"Add",
           handler:(newContact)=>{
-            this.contactsArray.push(
-              {id:this.contactsArray.length+1,
-              "Name":newContact.contactEntry}
+            this.countries.push(
+              {"capital" :newContact.Capital,
+              "city":newContact.City}
             )
           }
         }
