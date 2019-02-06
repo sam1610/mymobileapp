@@ -11,7 +11,7 @@
     <ion-buttons end  >
       <button  ion-button (click)=addContact()>
         <ion-icon  name="add" >
-            <ion-badge color ="danger"> {{contactsArray.length}}</ion-badge>
+            <ion-badge color ="danger"> {{countries.length}}</ion-badge>
         </ion-icon>
 
       </button> 
@@ -26,9 +26,9 @@
   <!--  Reorder function activated -->
 <ion-list [reorder]="reorderT"  (ionItemReorder)="Reorder($event)">
 <!-- looping through contactsArray item  -->
-  <ion-item-sliding *ngFor="let item of contactsArray ; let i=index" (click)="detailContact(item, i)"  > 
+  <ion-item-sliding *ngFor="let item of countries ; let i=index" (click)="detailContact(item, i)"  > 
     <!-- display  Contact Name -->
-        <ion-item>{{item.Name}}</ion-item>
+        <ion-item>{{item.country}}- {{item.city}}</ion-item>
         <ion-item-options side="right">
           <ion-icon name="trash" color="danger" (click)="deleteContact(item, i )"></ion-icon>
         </ion-item-options>

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { ServiceCountries } from './../../services/service-countries';
 import { Countries } from './../../shared/Countries';
 // home.ts
@@ -19,13 +20,14 @@ export class HomePage  implements OnInit{
   constructor(public navCtrl: NavController,
     private alertCtrl:AlertController, 
     private toasCtrl:ToastController, 
-    private countryService:ServiceCountries) {
+    private countryService:ServiceCountries, http:HttpClient) {
       
   }
 
   ngOnInit(){
 
-    this.
+    console.log(this.countryService.getData() );
+    this.countries=this.countryService.countries;
   }
   aboutContacts(){
     this.navCtrl.push(AboutPage);
@@ -66,8 +68,10 @@ export class HomePage  implements OnInit{
           text:"Add",
           handler:(newContact)=>{
             this.countries.push(
-              {"capital" :newContact.Capital,
-              "city":newContact.City}
+            {
+              "country":newContact.Country,
+              "city":newContact.City
+            }
             )
           }
         }

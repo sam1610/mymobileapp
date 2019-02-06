@@ -10,12 +10,12 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class ServiceCountries {
-  countries=[
+  countries :Countries[]=[
     {country:"bahrain", city:"manama"},
     {country:"FL", city:"miami"},
     {country:"KSA", city:"riyad"},
    ];
-  constructor(public http: HttpClient) {
+  constructor(public httpclient: HttpClient) {
     console.log('Hello ServiceCountriesProvider Provider');
   }
 getData(){

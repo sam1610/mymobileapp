@@ -1,4 +1,4 @@
 export class Countries {
-capital :string;
+country :string;
 city : string;
 }
