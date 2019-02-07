@@ -2,12 +2,24 @@ import { Countries } from './../shared/Countries';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+/*
+  Generated class for the ServiceCountriesProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
 @Injectable()
 export class ServiceCountries {
-  countriesUrl:any = "/assets/countries.json";
+  countries :Countries[]=[
+    {country:"bahrain", city:"manama"},
+    {country:"FL", city:"miami"},
+    {country:"KSA", city:"riyad"},
+   ];
   constructor(public httpclient: HttpClient) {
-    console.log(this.countriesUrl);}
-getData(){
-  return  this.httpclient.get(this.countriesUrl);
+    console.log('Hello ServiceCountriesProvider Provider');
   }
+getData(){
+  return  this.countries; 
+}
+ 
 }

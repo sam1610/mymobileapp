@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { ServiceCountries } from './../../services/service-countries';
 import { Countries } from './../../shared/Countries';
-// home.ts
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
 import { DetailsPage } from '../details/details';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-home',
@@ -14,27 +12,22 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomePage implements OnInit {
   reorderT = true;
-  contacts = " Constacts Application ";
+  contacts = " Weather App ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
   userName = "";
-  countries: Countries[];
+  countries: any;
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
-    private countryService: ServiceCountries, http: HttpClient) {
+    private countryService: ServiceCountries, private http:HttpClient) {
 
   }
   ngOnInit() {
-    this.countryService.getData().subscribe(
-      data => 
-        {
-          this.countries = data as Countries[];
-           //Object.keys(this.countries).length;
-           this.countRec=this.countries.length;
-          console.log(this.countries[1].city, " ", this.countRec);
-          
-        })
+     this.http.get("/assets/countries.json").subscribe(
+       data => {this.countries=data;
+      this.countRec=this.countries.length}
+     )
   }
 
   aboutContacts() {
@@ -65,11 +58,13 @@ export class HomePage implements OnInit {
       inputs: [
         {
           type: "text",
-          name: "City"
+          name: "City",
+          placeholder:"City"
         },
         {
           type: "text",
-          name: "Country"
+          name: "Country",
+          placeholder:"Country"
         }
       ],
       buttons: [
