@@ -6,72 +6,83 @@ import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
 import { DetailsPage } from '../details/details';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage  implements OnInit{
-  reorderT=true;
- contacts =" Constacts Application ";
- contactsImg="../../assets/imgs/contactsImg.jpg";
- userName= "";
- countries :Countries[];
+export class HomePage implements OnInit {
+  reorderT = true;
+  contacts = " Constacts Application ";
+  contactsImg = "/assets/imgs/contactsImg.jpg";
+  userName = "";
+  countries$: any;
   constructor(public navCtrl: NavController,
-    private alertCtrl:AlertController, 
-    private toasCtrl:ToastController, 
-    private countryService:ServiceCountries, http:HttpClient) {
+    private alertCtrl: AlertController,
+    private toasCtrl: ToastController,
+    private countryService: ServiceCountries, http: HttpClient) {
+
+  }
+
+  ngOnInit() {
+
+
+    this.countryService.getData().subscribe(
+      data => 
+        this.countries$ = data as Array<Countries>,
+      err=> console.log("error")
       
+        
+        )
   }
-
-  ngOnInit(){
-
-    console.log(this.countryService.getData() );
-    this.countries=this.countryService.countries;
-  }
-  aboutContacts(){
+  aboutContacts() {
     this.navCtrl.push(AboutPage);
   }
-  detailContact(item , i ){
-    console.log(item , i );
-    this.navCtrl.push(DetailsPage, {cte:item})
+  detailContact(item, i) {
+    console.log(item, i);
+    this.navCtrl.push(DetailsPage, { cte: item })
   }
-  deleteContact(item, i){
-    this.countries.splice(i , 1);
-    let toast=this.toasCtrl.create({
-      message: item.Name +" Contact Deleted",
-      duration :2000
+  deleteContact(item, i) {
+    this.countries.splice(i, 1);
+    let toast = this.toasCtrl.create({
+      message: item.Name + " Contact Deleted",
+      duration: 2000
     });
     toast.present();
   }
-  toggle(){
-    this.reorderT=!this.reorderT;
+  toggle() {
+    this.reorderT = !this.reorderT;
   }
-  Reorder($event){
+  Reorder($event) {
     reorderArray(this.countries, $event)
   }
-  addContact(){
-    let addCte=this.alertCtrl.create({
-      title:"add Contact",
-      message :"Enter a New Contact Here",
-      inputs:[
-        {type:"text",
-        name:"City"}, 
-        {type:"text",
-        name:"Country"}
-      ],
-      buttons:[
+  addContact() {
+    let addCte = this.alertCtrl.create({
+      title: "add Contact",
+      message: "Enter a New Contact Here",
+      inputs: [
         {
-          text:"Cancel"
+          type: "text",
+          name: "City"
         },
         {
-          text:"Add",
-          handler:(newContact)=>{
+          type: "text",
+          name: "Country"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancel"
+        },
+        {
+          text: "Add",
+          handler: (newContact) => {
             this.countries.push(
-            {
-              "country":newContact.Country,
-              "city":newContact.City
-            }
+              {
+                "country": newContact.Country,
+                "city": newContact.City
+              }
             )
           }
         }
