@@ -1,4 +1,3 @@
-import { ServiceCountries } from './../services/service-countries';
 import { DetailsPage } from './../pages/details/details';
 import { AboutPage } from './../pages/about/about';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,7 +9,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpClientModule } from '@angular/common/http';
-import { CountriesProvider } from '../providers/countries/countries';
 
 @NgModule({
   declarations: [
@@ -28,9 +26,8 @@ import { CountriesProvider } from '../providers/countries/countries';
   ],
   providers: [
     StatusBar,
-    SplashScreen,ServiceCountries,
+    SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CountriesProvider,
   ]
 })
 export class AppModule {}

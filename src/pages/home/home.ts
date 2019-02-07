@@ -1,6 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { ServiceCountries } from './../../services/service-countries';
-import { Countries } from './../../shared/Countries';
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
@@ -20,9 +18,7 @@ export class HomePage implements OnInit {
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
-    private countryService: ServiceCountries, private http:HttpClient) {
-
-  }
+    private http:HttpClient) {  }
   ngOnInit() {
      this.http.get("/assets/countries.json").subscribe(
        data => {this.countries=data;
