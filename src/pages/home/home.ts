@@ -17,24 +17,23 @@ export class HomePage implements OnInit {
   contacts = " Constacts Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
   userName = "";
-  countries$: any;
+  countries: any;
+  countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
     private countryService: ServiceCountries, http: HttpClient) {
 
   }
-
   ngOnInit() {
-
-
     this.countryService.getData().subscribe(
       data => 
-        this.countries$ = data as Array<Countries>,
-      err=> console.log("error")
-      
-        
-        )
+        {
+          this.countries = data;
+          this.countRec= this.countries.length ; //Object.keys(this.countries).length;
+          console.log(this.countries[1].city, " ", this.countRec);
+          
+        })
   }
   aboutContacts() {
     this.navCtrl.push(AboutPage);
