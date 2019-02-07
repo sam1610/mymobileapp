@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
+import { NavController, AlertController, 
+  reorderArray, 
+  ToastController } from 'ionic-angular';
 import { DetailsPage } from '../details/details';
 
 @Component({
@@ -22,9 +24,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
      this.http.get("/assets/countries.json").subscribe(
        data => {this.countries=data;
-      this.countRec=this.countries.length}
-     )
-  }
+      this.countRec=this.countries.length})  }
 
   aboutContacts() {
     this.navCtrl.push(AboutPage);
@@ -47,7 +47,7 @@ export class HomePage implements OnInit {
   Reorder($event) {
     reorderArray(this.countries, $event)
   }
-  addContact() {
+  addCountry() {
     let addCte = this.alertCtrl.create({
       title: "add Contact",
       message: "Enter a New Contact Here",
