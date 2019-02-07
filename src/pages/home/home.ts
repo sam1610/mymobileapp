@@ -29,6 +29,8 @@ export class HomePage implements OnInit {
 
 
     this.countries$ =this.countryService.getData();
+    console.log(this.countries$);
+    
   }
   aboutContacts() {
     this.navCtrl.push(AboutPage);
@@ -38,7 +40,7 @@ export class HomePage implements OnInit {
     this.navCtrl.push(DetailsPage, { cte: item })
   }
   deleteContact(item, i) {
-    this.countries.splice(i, 1);
+    this.countries$.splice(i, 1);
     let toast = this.toasCtrl.create({
       message: item.Name + " Contact Deleted",
       duration: 2000
@@ -49,7 +51,7 @@ export class HomePage implements OnInit {
     this.reorderT = !this.reorderT;
   }
   Reorder($event) {
-    reorderArray(this.countries, $event)
+    reorderArray(this.countries$, $event)
   }
   addContact() {
     let addCte = this.alertCtrl.create({
@@ -72,7 +74,7 @@ export class HomePage implements OnInit {
         {
           text: "Add",
           handler: (newContact) => {
-            this.countries.push(
+            this.countries$.push(
               {
                 "country": newContact.Country,
                 "city": newContact.City
