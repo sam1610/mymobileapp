@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   contacts = " Constacts Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
   userName = "";
-  countries$: any;
+  countries$: Observable<Countries[]>;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
@@ -28,13 +28,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
 
 
-    this.countryService.getData().subscribe(
-      data => 
-        this.countries$ = data as Array<Countries>,
-      err=> console.log("error")
-      
-        
-        )
+    this.countries$ =this.countryService.getData();
   }
   aboutContacts() {
     this.navCtrl.push(AboutPage);
