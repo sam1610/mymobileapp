@@ -29,12 +29,14 @@ export class HomePage implements OnInit {
     this.countryService.getData().subscribe(
       data => 
         {
-          this.countries = data;
-          this.countRec= this.countries.length ; //Object.keys(this.countries).length;
+          this.countries = data as Countries[];
+           //Object.keys(this.countries).length;
+           this.countRec=this.countries.length;
           console.log(this.countries[1].city, " ", this.countRec);
           
         })
   }
+
   aboutContacts() {
     this.navCtrl.push(AboutPage);
   }
@@ -82,7 +84,9 @@ export class HomePage implements OnInit {
                 "country": newContact.Country,
                 "city": newContact.City
               }
-            )
+            );
+            this.countRec= this.countries.length ;
+
           }
         }
       ]
