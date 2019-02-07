@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   contacts = " Constacts Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
   userName = "";
-  countries$: Observable<Countries[]>;
+  countries$: any;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
