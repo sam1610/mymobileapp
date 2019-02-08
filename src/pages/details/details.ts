@@ -1,7 +1,8 @@
 import { ServiceCountries } from './../../services/service-countries';
-// details.ts
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import "rxjs/operator/map";
+
 @Component({
   selector: 'page-details',
   templateUrl: 'details.html',
@@ -13,9 +14,10 @@ weather:any;
     public navParams: NavParams, private weatherS:ServiceCountries) {
     //notice that cte is the object key value trasmitted from home.ts 
 this.contactDetails=  this.navParams.data.cte ;
-this.weatherS.getWeather(this.contactDetails).subscribe(
+this.weatherS.getWeather(this.contactDetails)
+.subscribe(
   data=> { this.weather=data.current_observation;
-    console.log(this.weather);
+    console.log(data);
     
   }
 )
