@@ -6,7 +6,6 @@ import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
 import { DetailsPage } from '../details/details';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-home',
@@ -17,7 +16,7 @@ export class HomePage implements OnInit {
   contacts = " Constacts Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
   userName = "";
-  countries: Countries[];
+  countries: any;
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
