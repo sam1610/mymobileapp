@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ServiceCountries {
@@ -14,7 +14,9 @@ export class ServiceCountries {
   {
     console.log(this.ApIurl + '/'+item.country +'/' +item.city +'.json');
     
-    return this.http.get(this.ApIurl + '/'+item.country +'/' +item.city +'.json')
+    return this.http.get(this.ApIurl + '/'+item.country +'/' +item.city +'.json').map(
+      res=> res.current_observation
+    )
 
   
   }
