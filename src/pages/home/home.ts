@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { ServiceCountries } from './../../services/service-countries';
 import { Countries } from './../../shared/Countries';
 // home.ts
 import { AboutPage } from './../about/about';
@@ -16,31 +15,29 @@ export class HomePage implements OnInit {
   contacts = " Constacts Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
   userName = "";
-  countries: Countries[];
+  countries: any;
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
-    private countryService: ServiceCountries, http: HttpClient) {
+    private http:HttpClient) {
 
   }
+
+
   ngOnInit() {
-    this.countryService.getData().subscribe(
-      data => 
-        {
-          this.countries = data as Countries[];
-           //Object.keys(this.countries).length;
-           this.countRec=this.countries.length;
-          console.log(this.countries[1].city, " ", this.countRec);
-          
-        })
+    this.http.get("/assets/countries.json").subscribe(
+      data => {this.countries=data;
+     this.countRec=this.countries.length}
+    )
+
   }
 
   aboutContacts() {
     this.navCtrl.push(AboutPage);
   }
-  detailContact(item, i) {
-    console.log(item, i);
+  detailContact(item) {
+    console.log(item);
     this.navCtrl.push(DetailsPage, { cte: item })
   }
   deleteContact(item, i) {
@@ -64,11 +61,13 @@ export class HomePage implements OnInit {
       inputs: [
         {
           type: "text",
-          name: "City"
+          name: "City",
+          placeholder: "City"
         },
         {
           type: "text",
-          name: "Country"
+          name: "Country",
+          placeholder:"Country"
         }
       ],
       buttons: [

@@ -1,13 +1,20 @@
-import { Countries } from './../shared/Countries';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
 @Injectable()
 export class ServiceCountries {
-  countriesUrl:any = "/assets/countries.json";
-  constructor(public httpclient: HttpClient) {
-    console.log(this.countriesUrl);}
-getData(){
-  return  this.httpclient.get(this.countriesUrl);
+  ApIurl: string;
+  apikey ='59d61e5d23ee4b65';
+    constructor(public http: HttpClient) {
+      this.ApIurl='http://api.wunderground.com/api/'+this.apikey+'/conditions/q';
+      console.log(this.ApIurl);
+    }
+  getWeather(item)
+  {
+    console.log(this.ApIurl + '/'+item.country +'/' +item.city +'.json');
+    
+    return this.http.get(this.ApIurl + '/'+item.country +'/' +item.city +'.json')
+  
   }
 }

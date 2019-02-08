@@ -1,5 +1,7 @@
 [
         {"country": "bahrain", "city": "manama" },
         {"country": "FL", "city": "miami"},
-        {"country": "KSA", "city": "riyad"  }
+        {"country": "KSA", "city": "riyad"  },
+        {"country": "FL", "city": "miami"  }
+
     ]
