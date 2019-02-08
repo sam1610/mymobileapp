@@ -15,11 +15,11 @@ $colors: (
 );
 
 
-$toolbar-md-background: color($colors , secondary);
+$toolbar-md-background: color($colors , primary);
 $tabs-md-background: color($colors , secondary);
 $tabs-md-tab-text-color: color($colors , light);
 
-$list-md-background-color: color($colors , secondary);
+$list-md-background-color: color($colors , primary);
 $list-md-text-color: color($colors , light);
 
 
