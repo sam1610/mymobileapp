@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   contacts = " Constacts Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
   userName = "";
-  countries: any;
+  countries: Countries[];
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
