@@ -10,15 +10,21 @@ import "rxjs/operator/map";
 export class DetailsPage {
 contactDetails:any;
 weather:any;
+available:boolean;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, private weatherS:ServiceCountries) {
     //notice that cte is the object key value trasmitted from home.ts 
 this.contactDetails=  this.navParams.data.cte ;
 this.weatherS.getWeather(this.contactDetails)
 .subscribe(
-  data=> { this.weather=data.current_observation;
-    console.log(data);
-    
+  data=> { this.weather=data;
+    console.log(data);  
+    this.available=true;
+  },
+  err=>{
+      console.log(err);
+      this.available=false;
+      
   }
 )
  
