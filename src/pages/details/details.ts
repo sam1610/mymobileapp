@@ -19,7 +19,7 @@ export class DetailsPage {
       .subscribe(
         data => {
         this.weather = data;
-          console.log(data ? true : false);
+          console.log(data);
           if (!data) {
             let toast = this.toastCtrl.create({
               message: "City Not Available",
