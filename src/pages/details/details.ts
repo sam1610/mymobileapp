@@ -22,8 +22,8 @@ export class DetailsPage {
     this.weatherS.getWeather(this.contactDetails)
       .subscribe(
         data => {
-        this.weather = data;
-          console.log(data);
+        this.weather = data.current_observation;
+          console.log(this.weather);
           if (!data) {
             let toast = this.toastCtrl.create({
               message: "City Not Available",
