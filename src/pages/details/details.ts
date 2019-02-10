@@ -20,6 +20,7 @@ export class DetailsPage  implements OnInit{
     //  noticed that current_bservation doesnot connect all time
     // so i have to use Observable 
     }
+    
     ngOnInit(): void {
       //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
       //Add 'implements OnInit' to the class.

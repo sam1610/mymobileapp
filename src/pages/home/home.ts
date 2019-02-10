@@ -1,6 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { Countries } from './../../shared/Countries';
-// home.ts
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
@@ -33,17 +31,17 @@ export class HomePage implements OnInit {
 
   }
 
-  aboutContacts() {
+  aboutLocation() {
     this.navCtrl.push(AboutPage);
   }
-  detailContact(item) {
+  detailLocation(item) {
     console.log(item);
     this.navCtrl.push(DetailsPage, { cte: item })
   }
-  deleteContact(item, i) {
+  deleteLocation(item, i) {
     this.countries.splice(i, 1);
     let toast = this.toasCtrl.create({
-      message: item.Name + " Contact Deleted",
+      message: item.Name + " Location Deleted",
       duration: 2000
     });
     toast.present();
@@ -54,10 +52,10 @@ export class HomePage implements OnInit {
   Reorder($event) {
     reorderArray(this.countries, $event)
   }
-  addContact() {
+  addLocation() {
     let addCte = this.alertCtrl.create({
-      title: "add Contact",
-      message: "Enter a New Contact Here",
+      title: "Location",
+      message: "Enter a New Location",
       inputs: [
         {
           type: "text",

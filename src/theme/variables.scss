@@ -13,14 +13,25 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222
 );
+ion-button {
+  --color: #222;
+}
+:root {
+  /* Set the background of the entire app */
+  --ion-background-color: #00eeff;
+  /* Set the font family of the entire app */
+  --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
+}
+.ios {
+  --ion-text-color: rgb(205, 109, 80);
+}
 
+// $toolbar-ios-background: color($colors , primary);
+// $tabs-ios-background: color($colors , secondary);
+// $tabs-ios-tab-text-color: color($colors , light);
 
-$toolbar-md-background: color($colors , primary);
-$tabs-md-background: color($colors , secondary);
-$tabs-md-tab-text-color: color($colors , light);
-
-$list-md-background-color: color($colors , primary);
-$list-md-text-color: color($colors , light);
+// $list-ios-background-color: color($colors , primary);
+// $list-ios-text-color: color($colors , light);
 
 
 @import "ionic.theme.default";
