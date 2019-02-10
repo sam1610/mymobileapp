@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { ServiceCountries } from './../../services/service-countries';
 import { Countries } from './../../shared/Countries';
-// home.ts
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
@@ -28,7 +27,7 @@ export class HomePage implements OnInit {
     this.countryService.getData().subscribe(
       data => 
         {
-          this.countries = data as Countries[];
+          this.countries = data ;
            //Object.keys(this.countries).length;
            this.countRec=this.countries.length;
           console.log(this.countries[1].city, " ", this.countRec);
@@ -36,17 +35,17 @@ export class HomePage implements OnInit {
         })
   }
 
-  aboutContacts() {
+  aboutLocation() {
     this.navCtrl.push(AboutPage);
   }
-  detailContact(item, i) {
+  detailLocation(item, i) {
     console.log(item, i);
     this.navCtrl.push(DetailsPage, { cte: item })
   }
-  deleteContact(item, i) {
+  deleteLocation(item, i) {
     this.countries.splice(i, 1);
     let toast = this.toasCtrl.create({
-      message: item.Name + " Contact Deleted",
+      message: item.Name + " Location Deleted",
       duration: 2000
     });
     toast.present();
@@ -57,10 +56,10 @@ export class HomePage implements OnInit {
   Reorder($event) {
     reorderArray(this.countries, $event)
   }
-  addContact() {
+  addCountry() {
     let addCte = this.alertCtrl.create({
-      title: "add Contact",
-      message: "Enter a New Contact Here",
+      title: "add Location",
+      message: "Enter a New Location Here",
       inputs: [
         {
           type: "text",
@@ -77,11 +76,11 @@ export class HomePage implements OnInit {
         },
         {
           text: "Add",
-          handler: (newContact) => {
+          handler: (newLocation) => {
             this.countries.push(
               {
-                "country": newContact.Country,
-                "city": newContact.City
+                "country": newLocation.Country,
+                "city": newLocation.City
               }
             );
             this.countRec= this.countries.length ;
