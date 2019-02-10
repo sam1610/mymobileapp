@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
-    private countryService: ServiceCountries, http: HttpClient) {
+    private countryService: ServiceCountries, private http: HttpClient) {
 
   }
   ngOnInit() {
@@ -33,6 +33,7 @@ export class HomePage implements OnInit {
           console.log(this.countries[1].city, " ", this.countRec);
           
         })
+    
   }
 
   aboutLocation() {
