@@ -1,4 +1,3 @@
-import { ServiceCountries } from './../services/service-countries';
 import { DetailsPage } from './../pages/details/details';
 import { AboutPage } from './../pages/about/about';
 import { BrowserModule } from '@angular/platform-browser';

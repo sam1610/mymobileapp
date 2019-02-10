@@ -1,5 +1,5 @@
+// home.ts
 import { WeatherProvider } from './../../providers/weather/weather';
-import { HttpClient } from '@angular/common/http';
 import { Countries } from './../../shared/Countries';
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
@@ -14,24 +14,21 @@ export class HomePage implements OnInit {
   reorderT = true;
   weatherApp = " weather Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
-  userName = "";
   countries: any;
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
-    private weatherProvider: WeatherProvider, http: HttpClient) {
-
+    private weatherProvider: WeatherProvider) {
   }
   ngOnInit() {
     this.weatherProvider.getData().subscribe(
       data => 
         {
-          this.countries = data as Countries[];
+          this.countries = data ;
            //Object.keys(this.countries).length;
            this.countRec=this.countries.length;
-          console.log(this.countries[1].city, " ", this.countRec);
-          
+          console.log(this.countries)       
         })
   }
 

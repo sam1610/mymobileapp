@@ -27,11 +27,11 @@
 <ion-list [reorder]="reorderT"  (ionItemReorder)="Reorder($event)">
 <!-- looping through contactsArray item  -->
   <ion-item-sliding *ngFor="let item of countries  ; let i=index" (click)="detailLocation(item, i)"  > 
-    <!-- display  Contact Name -->
+    <!-- display  Country - city  Name or all records -->
         <ion-item>{{item.country}}- {{item.city}}</ion-item>
         <ion-item-options side="right">
           <ion-icon name="trash" color="danger" (click)="deleteLocation(item, i )"></ion-icon>
         </ion-item-options>
-      </ion-item-sliding>
+    </ion-item-sliding>
 </ion-list>
 </ion-content>
