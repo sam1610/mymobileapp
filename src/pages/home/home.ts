@@ -1,7 +1,6 @@
+import { WeatherProvider } from './../../providers/weather/weather';
 import { HttpClient } from '@angular/common/http';
-import { ServiceCountries } from './../../services/service-countries';
 import { Countries } from './../../shared/Countries';
-// home.ts
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
@@ -21,11 +20,11 @@ export class HomePage implements OnInit {
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
-    private countryService: ServiceCountries, http: HttpClient) {
+    private weatherProvider: WeatherProvider, http: HttpClient) {
 
   }
   ngOnInit() {
-    this.countryService.getData().subscribe(
+    this.weatherProvider.getData().subscribe(
       data => 
         {
           this.countries = data as Countries[];
@@ -46,7 +45,7 @@ export class HomePage implements OnInit {
   deleteLocation(item, i) {
     this.countries.splice(i, 1);
     let toast = this.toasCtrl.create({
-      message: item.Name + " Location Deleted",
+      message: item.city  + " Location Deleted",
       duration: 2000
     });
     toast.present();

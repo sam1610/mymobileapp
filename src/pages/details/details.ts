@@ -13,7 +13,6 @@ this.locationDetails=  this.navParams.data.cte ;
 console.log(this.locationDetails);
 
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailsPage');
   }
