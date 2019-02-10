@@ -11,9 +11,7 @@ locationDetails:any
     //notice that cte is the object key value trasmitted from home.ts 
 this.locationDetails=  this.navParams.data.cte ;
 console.log(this.locationDetails);
-
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailsPage');
   }

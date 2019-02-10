@@ -1,6 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { ServiceCountries } from './../../services/service-countries';
-import { Countries } from './../../shared/Countries';
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
@@ -12,19 +10,18 @@ import { DetailsPage } from '../details/details';
 })
 export class HomePage implements OnInit {
   reorderT = true;
-  contacts = " Constacts Application ";
+  weatherApp = " Constacts Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
-  userName = "";
   countries: any;
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
     private toasCtrl: ToastController,
-    private countryService: ServiceCountries, private http: HttpClient) {
+    private http: HttpClient) {
 
   }
   ngOnInit() {
-    this.countryService.getData().subscribe(
+    this.http.get("/assets/countries.json").subscribe(
       data => 
         {
           this.countries = data ;
@@ -46,9 +43,10 @@ export class HomePage implements OnInit {
   deleteLocation(item, i) {
     this.countries.splice(i, 1);
     let toast = this.toasCtrl.create({
-      message: item.Name + " Location Deleted",
+      message: item.city + " Location is Deleted",
       duration: 2000
     });
+    this.countRec= this.countries.length ;
     toast.present();
   }
   toggle() {
@@ -57,7 +55,7 @@ export class HomePage implements OnInit {
   Reorder($event) {
     reorderArray(this.countries, $event)
   }
-  addCountry() {
+  addLocation() {
     let addCte = this.alertCtrl.create({
       title: "add Location",
       message: "Enter a New Location Here",

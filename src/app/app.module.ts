@@ -1,4 +1,3 @@
-import { ServiceCountries } from './../services/service-countries';
 import { DetailsPage } from './../pages/details/details';
 import { AboutPage } from './../pages/about/about';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     StatusBar,
-    SplashScreen,ServiceCountries,
+    SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
