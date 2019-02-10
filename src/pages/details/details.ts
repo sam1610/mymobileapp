@@ -7,14 +7,12 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class DetailsPage {
 locationDetails:any
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+constructor(public navCtrl: NavController, public navParams: NavParams) {
     //notice that cte is the object key value trasmitted from home.ts 
 this.locationDetails=  this.navParams.data.cte ;
-console.log(this.locationDetails);
+console.log(this.locationDetails);}
 
-  }
-
-  ionViewDidLoad() {
+ionViewDidLoad() {
     console.log('ionViewDidLoad DetailsPage');
   }
 }

@@ -15,7 +15,6 @@ export class HomePage implements OnInit {
   reorderT = true;
   weatherApp = " weather Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
-  userName = "";
   countries: any;
   countRec:number;
   constructor(public navCtrl: NavController,
