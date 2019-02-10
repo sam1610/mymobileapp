@@ -13,7 +13,7 @@ import { DetailsPage } from '../details/details';
 })
 export class HomePage implements OnInit {
   reorderT = true;
-  contacts = " Constacts Application ";
+  weatherApp = " weather Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
   userName = "";
   countries: any;
@@ -36,20 +36,22 @@ export class HomePage implements OnInit {
         })
   }
 
-  aboutContacts() {
+  aboutLocation() {
     this.navCtrl.push(AboutPage);
   }
-  detailContact(item, i) {
+  detailLocation(item, i) {
     console.log(item, i);
     this.navCtrl.push(DetailsPage, { cte: item })
   }
-  deleteContact(item, i) {
+  deleteLocation(item, i) {
     this.countries.splice(i, 1);
     let toast = this.toasCtrl.create({
-      message: item.Name + " Contact Deleted",
+      message: item.Name + " Location Deleted",
       duration: 2000
     });
     toast.present();
+    this.countRec= this.countries.length ;
+
   }
   toggle() {
     this.reorderT = !this.reorderT;
@@ -57,10 +59,10 @@ export class HomePage implements OnInit {
   Reorder($event) {
     reorderArray(this.countries, $event)
   }
-  addContact() {
+  addLocation() {
     let addCte = this.alertCtrl.create({
-      title: "add Contact",
-      message: "Enter a New Contact Here",
+      title: "add Location",
+      message: "Enter a New Location Here",
       inputs: [
         {
           type: "text",
@@ -77,11 +79,11 @@ export class HomePage implements OnInit {
         },
         {
           text: "Add",
-          handler: (newContact) => {
+          handler: (newLocation) => {
             this.countries.push(
               {
-                "country": newContact.Country,
-                "city": newContact.City
+                "country": newLocation.Country,
+                "city": newLocation.City
               }
             );
             this.countRec= this.countries.length ;
