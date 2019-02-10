@@ -9,7 +9,7 @@
     <ion-icon name="flash" large color="danger" (click)="toggle()" *ngIf="!reorderT" > </ion-icon>
     </ion-title>
     <ion-buttons end  >
-      <button  ion-button (click)=addContact()>
+      <button  ion-button (click)=addLocation()>
         <ion-icon  name="add" >
             <ion-badge color ="danger"> {{countRec}}</ion-badge>
         </ion-icon>
@@ -18,7 +18,7 @@
     
     </ion-buttons>
     
-    <img [src]="contactsImg" alt="my ContactImg"   (click)="aboutContacts()">
+    <img [src]="contactsImg" alt="my ContactImg"   (click)="aboutLocation()">
   </ion-navbar>
 </ion-header>
 
@@ -26,11 +26,11 @@
   <!--  Reorder function activated -->
 <ion-list [reorder]="reorderT"  (ionItemReorder)="Reorder($event)">
 <!-- looping through contactsArray item  -->
-  <ion-item-sliding *ngFor="let item of countries  ; let i=index" (click)="detailContact(item)"  > 
+  <ion-item-sliding *ngFor="let item of countries  ; let i=index" (click)="detailLocation(item)"  > 
     <!-- display  Contact Name -->
         <ion-item>{{item.country}}- {{item.city}}</ion-item>
         <ion-item-options side="right">
-          <ion-icon name="trash" color="danger" (click)="deleteContact(item, i )"></ion-icon>
+          <ion-icon name="trash" color="danger" (click)="deleteLocation(item, i )"></ion-icon>
         </ion-item-options>
       </ion-item-sliding>
 </ion-list>
