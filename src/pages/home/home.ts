@@ -10,9 +10,8 @@ import { DetailsPage } from '../details/details';
 })
 export class HomePage implements OnInit {
   reorderT = true;
-  contacts = " Constacts Application ";
+  weatherApp = " Weather Application ";
   contactsImg = "/assets/imgs/contactsImg.jpg";
-  userName = "";
   countries: any;
   countRec:number;
   constructor(public navCtrl: NavController,
@@ -21,14 +20,11 @@ export class HomePage implements OnInit {
     private http:HttpClient) {
 
   }
-
-
   ngOnInit() {
     this.http.get("/assets/countries.json").subscribe(
       data => {this.countries=data;
      this.countRec=this.countries.length}
     )
-
   }
 
   aboutLocation() {
@@ -41,7 +37,7 @@ export class HomePage implements OnInit {
   deleteLocation(item, i) {
     this.countries.splice(i, 1);
     let toast = this.toasCtrl.create({
-      message: item.Name + " Location Deleted",
+      message: item.city + " Location Deleted",
       duration: 2000
     });
     toast.present();
