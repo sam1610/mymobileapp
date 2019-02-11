@@ -15,7 +15,5 @@ export class ServiceCountries {
     console.log(this.ApIurl + '/'+item.country +'/' +item.city +'.json');
     
     return this.http.get(this.ApIurl + '/'+item.country +'/' +item.city +'.json');
-
-  
   }
 }
