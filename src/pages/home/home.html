@@ -5,8 +5,7 @@
      
       {{contacts}} 
       <!-- toggle button to activate items reorder -->
-       <ion-icon name="flash"  large color="secondary" (click)="toggle()" *ngIf="reorderT" > </ion-icon>
-    <ion-icon name="flash" large color="danger" (click)="toggle()" *ngIf="!reorderT" > </ion-icon>
+       <ion-icon name="flash"  large color="secondary" (click)="reorderT=!reorderT" [ngClass]="reorderT? 'red':'green'" > </ion-icon>
     </ion-title>
     <ion-buttons end  >
       <button  ion-button (click)=addContact()>
