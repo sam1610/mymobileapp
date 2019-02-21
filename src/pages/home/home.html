@@ -2,16 +2,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{contacts}}
+      {{weatherApp}}
     </ion-title>
-    <img [src]="contactsImg" alt="my ContactImg"   (click)="aboutContacts()">
+    <img [src]="flag" alt="my ContactImg"   (click)="aboutApp()">
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 <ion-list>
-    <ion-item *ngFor="let item of contactsArray" > 
-        {{item.Name}}</ion-item>
+    <ion-item *ngFor="let item of countriesArray" > 
+        {{item.country}}</ion-item>
  
 </ion-list>
 </ion-content>

@@ -8,17 +8,17 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
- contacts =" Constacts Application ";
- contactsImg="../../assets/imgs/contactsImg.jpg";
- userName= "";
- contactsArray=[
-  {Name:"Ahmed", id:1},
-  {Name:"samir", id:2},
-  {Name:"Ali", id:3}
+ weatherApp :string =" Weather Mobile  Application ";
+ flag :string ="/assets/imgs/flag.png";
+ userName: string="";
+countriesArray=[
+  {"country": "bahrain", "city": "manama" },
+  {"country": "FL", "city": "miami"},
+  {"country": "KSA", "city": "riyad"  },
  ];
   constructor(public navCtrl: NavController) {
   }
-  aboutContacts(){
+  aboutApp(){
     this.navCtrl.push(AboutPage);
   }
 }
