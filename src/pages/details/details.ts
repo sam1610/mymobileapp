@@ -6,11 +6,11 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'details.html',
 })
 export class DetailsPage {
-contactDetails:any
+  locationDetails:any
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //notice that cte is the object key value trasmitted from home.ts 
-this.contactDetails=  this.navParams.data.cte ;
-console.log(this.contactDetails);
+this.locationDetails=  this.navParams.data.cte ;
+console.log(this.locationDetails);
 
   }
 

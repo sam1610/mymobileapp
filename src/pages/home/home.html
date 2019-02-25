@@ -2,23 +2,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{contacts}}
+      {{weatherApp }}
     </ion-title>
     <ion-buttons end  >
-      <button  ion-button (click)=addContact()>
+      <button  ion-button (click)=addLocation()>
         <ion-icon  name="add" >
-            <ion-badge color ="danger"> {{contactsArray.length}}</ion-badge>
+            <ion-badge color ="danger"> {{countriesArray.length}}</ion-badge>
         </ion-icon>
       </button>
     </ion-buttons>
-    <img [src]="contactsImg" alt="my ContactImg"   (click)="aboutContacts()">
+    <img [src]="flag" alt=" Kingdom of Bahrain"   (click)="aboutApp()">
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 <ion-list>
-    <ion-item *ngFor="let item of contactsArray ; let i=index" (click)="detailContact(item, i)"  > 
-        {{item.Name}}</ion-item>
+    <ion-item *ngFor="let item of countriesArray ; let i=index" (click)="detailLocation(item, i)"  > 
+        {{item.country}}--{{item.city}}</ion-item>
  
 </ion-list>
 </ion-content>

@@ -9,47 +9,60 @@ import { DetailsPage } from '../details/details';
   templateUrl: 'home.html'
 })
 export class HomePage {
- contacts =" Constacts Application ";
- contactsImg="../../assets/imgs/contactsImg.jpg";
- userName= "";
- contactsArray=[
-  {Name:"Ahmed", id:1},
-  {Name:"samir", id:2},
-  {Name:"Ali", id:3}
- ];
+  weatherApp =" Weather  Application ";
+  flag="/assets/imgs/flag.png";
+  countRec:number;
+  countriesArray=[
+   {"country": "bahrain", "city": "manama" },
+   {"country": "FL", "city": "miami"},
+   {"country": "KSA", "city": "riyad"  },
+   {"country": "Egypt", "city": "Cairo"}
+  ];
   constructor(public navCtrl: NavController,
     private alertCtrl:AlertController) {
   }
-  aboutContacts(){
+  aboutApp(){
     this.navCtrl.push(AboutPage);
   }
-  detailContact(item , i ){
+  detailLocation(item , i ){
     console.log(item , i );
     this.navCtrl.push(DetailsPage, {cte:item})
   }
-  addContact(){
-    let addCte=this.alertCtrl.create({
-      title:"add Contact",
-      message :"Enter a New Contact Here",
-      inputs:[
-        {type:"text",
-        name:"contactEntry"}
-      ],
-      buttons:[
+  addLocation() {
+    let addLocation = this.alertCtrl.create({
+      title: "Location",
+      message: "Enter a New Location",
+      inputs: [
         {
-          text:"Cancel"
+          type: "text",
+          name: "City",
+          placeholder: "City"
         },
         {
-          text:"Add",
-          handler:(newContact)=>{
-            this.contactsArray.push(
-              {id:this.contactsArray.length+1,
-              "Name":newContact.contactEntry}
-            )
+          type: "text",
+          name: "Country",
+          placeholder:"Country"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancel"
+        },
+        {
+          text: "Add",
+          handler: (newLocation) => {
+            this.countriesArray.push(
+              {
+                "country": newLocation.Country,
+                "city": newLocation.City
+              }
+            );
+            this.countRec= this.countriesArray.length ;
+
           }
         }
       ]
     });
-    addCte.present();
+    addLocation.present();
   }
 }
