@@ -11,11 +11,11 @@ import { DetailsPage } from '../details/details';
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit {
-  reorderT = true;
-  contacts = " Weather App ";
-  contactsImg = "/assets/imgs/contactsImg.jpg";
+  reorderT = false;
+  weaterApp = " Weather App ";
+  flag = "/assets/imgs/flag.png";
   userName = "";
-  countries: any;
+  countriesArray: any;
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
@@ -23,8 +23,8 @@ export class HomePage implements OnInit {
     private http:HttpClient) {  }
   ngOnInit() {
      this.http.get("/assets/countries.json").subscribe(
-       data => {this.countries=data;
-      this.countRec=this.countries.length})  }
+       data => {this.countriesArray=data;
+      this.countRec=this.countriesArray.length})  }
 
   aboutContacts() {
     this.navCtrl.push(AboutPage);
@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
     this.navCtrl.push(DetailsPage, { cte: item })
   }
   deleteContact(item, i) {
-    this.countries.splice(i, 1);
+    this.countriesArray.splice(i, 1);
     let toast = this.toasCtrl.create({
       message: item.Name + " Contact Deleted",
       duration: 2000
@@ -45,7 +45,7 @@ export class HomePage implements OnInit {
     this.reorderT = !this.reorderT;
   }
   Reorder($event) {
-    reorderArray(this.countries, $event)
+    reorderArray(this.countriesArray, $event)
   }
   addCountry() {
     let addCte = this.alertCtrl.create({
@@ -70,13 +70,13 @@ export class HomePage implements OnInit {
         {
           text: "Add",
           handler: (newContact) => {
-            this.countries.push(
+            this.countriesArray.push(
               {
                 "country": newContact.Country,
                 "city": newContact.City
               }
             );
-            this.countRec= this.countries.length ;
+            this.countRec= this.countriesArray.length ;
 
           }
         }
