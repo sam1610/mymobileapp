@@ -6,40 +6,47 @@
 </ion-header>
 
 <ion-content padding class="home">
- <ion-grid *ngIf="weather"> 
-  <!-- ; else notAvailable"> -->
-   <ion-row>
-      <ion-col width-50 offset-25>
-          <h2 class="location">{{weather.display_location.full}}</h2>
-          <div class="icon"><img src="{{ weather.icon_url }}" alt=""></div>
-          <h3 class="desc"> {{weather.weather}}</h3>
-          <h1 class="temp">{{weather.temp_c}}&deg;</h1>
-      </ion-col>
-   </ion-row>
-   <ion-row>  
-     <ion-col width-100>
-        <ion-list>
-          <ion-item>
-            <strong> Temp:</strong>{{weather.temperature_string}}
-          </ion-item>
-          <ion-item>
-            <strong> Relative Humidity :</strong>{{weather.relative_humidity}}
-          </ion-item>
-          <ion-item>
-            <strong> Dewpoint:</strong>{{weather.dewpoint_string}}
-          </ion-item>
-          <ion-item>
-            <strong> visibility:</strong>{{weather.visibility_mi}}
-          </ion-item>
-          <ion-item>
-            <strong> Heat Index:</strong>{{weather.heat_index_string}}
-          </ion-item>
-        </ion-list>
-     </ion-col>
-   </ion-row>
- </ion-grid>
-<!-- <ng-template #notAvailable>
+
+  <ion-grid>
+    <ion-list>
+      <ion-item>
+        {{   data.humidity  }}
+      </ion-item>
+    </ion-list>
+
+    <!-- ; else notAvailable"> -->
+    <!-- <ion-row>
+                  <ion-col width-50 offset-25>
+                      <h2 class="location">{{weather.name}}</h2>
+                      <p>{{weather.weather['icon']}}</p>
+                      <div class="icon"><img src="http://openweathermap.org/img/w/{{weather.weather.icon}}"  alt=""></div>
+                      <h3 class="desc"> {{weather.main.humidity}}</h3>
+                      <h1 class="temp">{{weather.main.temp}}&deg;</h1>
+                  </ion-col>
+              </ion-row>
+               <ion-row>  
+                <ion-col width-100>
+                    <ion-list>
+                      <ion-item>
+                        <strong> Temp:</strong>{{weather.main.temp}}
+                      </ion-item>
+                      <ion-item>
+                        <strong> Relative Humidity :</strong>{{weather.main.humidity}}
+                      </ion-item>
+                      <ion-item>
+                        <strong> Pressure:</strong>{{weather.main.pressure}}
+                      </ion-item>
+                      <ion-item>
+                        <strong> visibility:</strong>{{weather.visibility}}
+                      </ion-item>
+                      <ion-item>
+                        <strong> wind :</strong>{{weather.wind.speed}}
+                      </ion-item>
+                    </ion-list>
+                </ion-col>
+              </ion-row>  -->
+  </ion-grid>
+  <!-- <ng-template #notAvailable>
    <h1>  City not availabe</h1>
  </ng-template> -->
 </ion-content>
-

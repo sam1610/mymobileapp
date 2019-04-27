@@ -1,0 +1,42 @@
+{
+    "coord": {
+        "lon": 56.02,
+        "lat": 25.33
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 23,
+        "pressure": 1015,
+        "humidity": 64,
+        "temp_min": 22,
+        "temp_max": 24
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 2.1,
+        "deg": 220
+    },
+    "clouds": {
+        "all": 0
+    },
+    "dt": 1556128800,
+    "sys": {
+        "type": 1,
+        "id": 7544,
+        "message": 0.0081,
+        "country": "AE",
+        "sunrise": 1556070339,
+        "sunset": 1556116938
+    },
+    "id": 292953,
+    "name": "Manama",
+    "cod": 200
+}
