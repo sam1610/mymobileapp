@@ -15,7 +15,12 @@ export class HomePage implements OnInit {
   weaterApp = " Weather App ";
   flag = "/assets/imgs/flag.png";
   userName = "";
-  countriesArray: any;
+  countriesArray=[
+    {"country": "bahrain", "city": "manama" },
+    {"country": "FL", "city": "miami"},
+    {"country": "KSA", "city": "riyad"  },
+    {"country": "Egypt", "city": "Cairo"  }
+];
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
