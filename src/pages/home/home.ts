@@ -11,16 +11,14 @@ export class HomePage {
  contacts =" Constacts Application ";
  contactsImg="../../assets/imgs/contactsImg.jpg";
  userName= "";
+ countriesArray=[
+  {"country": "bahrain", "city": "manama" },
+  {"country": "FL", "city": "miami"},
+  {"country": "KSA", "city": "riyad"  },
+  {"country": "Egypt", "city": "Cairo"  }
+];
   constructor(public navCtrl: NavController) {
   }
   aboutContacts(){
-    this.navCtrl.push(AboutPage);
+    this.navCtrl.push(AboutPage);}
   }
-  getContacts(){
-    return  [
-      {Name:"Ahmed", id:1},
-      {Name:"samir", id:2},
-      {Name:"Ali", id:3}
-     ]
-  }
-}
