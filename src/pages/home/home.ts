@@ -14,7 +14,6 @@ export class HomePage implements OnInit {
   reorderT = false;
   weaterApp = " Weather App ";
   flag = "/assets/imgs/flag.png";
-  userName = "";
   countriesArray: any;
   countRec:number;
   constructor(public navCtrl: NavController,
@@ -24,7 +23,8 @@ export class HomePage implements OnInit {
   ngOnInit() {
      this.http.get("/assets/countries.json").subscribe(
        data => {this.countriesArray=data;
-      this.countRec=this.countriesArray.length})  }
+      this.countRec=this.countriesArray.length}) 
+     }
 
   aboutContacts() {
     this.navCtrl.push(AboutPage);
