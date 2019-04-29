@@ -1,9 +1,8 @@
+import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController, 
-  reorderArray, 
-  ToastController } from 'ionic-angular';
+import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
 import { DetailsPage } from '../details/details';
 
 @Component({
@@ -15,20 +14,16 @@ export class HomePage implements OnInit {
   weaterApp = " Weather App ";
   flag = "/assets/imgs/flag.png";
   userName = "";
-  countriesArray=[
-    {"country": "bahrain", "city": "manama" },
-    {"country": "FL", "city": "miami"},
-    {"country": "KSA", "city": "riyad"  },
-    {"country": "Egypt", "city": "Cairo"  }
-];
+  countriesArray:Observable<any>;
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
-    private toasCtrl: ToastController,
-    private http:HttpClient) {  }
-  ngOnInit() {
+    private toasCtrl: ToastController, private http:HttpClient) {  }
 
-    this.countRec=this.countriesArray.length;
+
+  ngOnInit() {
+    this.countriesArray=this.http.get("/assest/countries.json");
+    // this.countRec=this.countriesArray.length();
   }
 
   aboutContacts() {
@@ -39,7 +34,7 @@ export class HomePage implements OnInit {
     this.navCtrl.push(DetailsPage, { cte: item })
   }
   deleteContact(item, i) {
-    this.countriesArray.splice(i, 1);
+    // this.countriesArray.splice(i, 1);
     let toast = this.toasCtrl.create({
       message: item.Name + " Contact Deleted",
       duration: 2000
@@ -81,7 +76,7 @@ export class HomePage implements OnInit {
                 "city": newContact.City
               }
             );
-            this.countRec= this.countriesArray.length ;
+            // this.countRec= this.countriesArray.length ;
 
           }
         }
