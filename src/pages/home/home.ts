@@ -27,9 +27,9 @@ export class HomePage implements OnInit {
     private toasCtrl: ToastController,
     private http:HttpClient) {  }
   ngOnInit() {
-     this.http.get("/assets/countries.json").subscribe(
-       data => {this.countriesArray=data;
-      this.countRec=this.countriesArray.length})  }
+
+    this.countRec=this.countriesArray.length;
+  }
 
   aboutContacts() {
     this.navCtrl.push(AboutPage);
