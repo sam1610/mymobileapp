@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +13,7 @@ export class HomePage implements OnInit {
   weaterApp = " Weather App ";
   flag = "/assets/imgs/flag.png";
   userName = "";
-  countriesArray:Observable<any>;
+  countriesArray:any;
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
@@ -22,8 +21,13 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
-    this.countriesArray=this.http.get("/assest/countries.json");
-    // this.countRec=this.countriesArray.length();
+  this.http.get("/assets/countries.json")
+  .subscribe(
+    data=> {
+      this.countriesArray=data;
+      this.countRec=this.countriesArray.length;
+    }
+  )
   }
 
   aboutContacts() {
@@ -34,7 +38,7 @@ export class HomePage implements OnInit {
     this.navCtrl.push(DetailsPage, { cte: item })
   }
   deleteContact(item, i) {
-    // this.countriesArray.splice(i, 1);
+   this.countriesArray.splice(i, 1);
     let toast = this.toasCtrl.create({
       message: item.Name + " Contact Deleted",
       duration: 2000
@@ -76,7 +80,7 @@ export class HomePage implements OnInit {
                 "city": newContact.City
               }
             );
-            // this.countRec= this.countriesArray.length ;
+            this.countRec= this.countriesArray.length ;
 
           }
         }

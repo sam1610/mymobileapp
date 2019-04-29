@@ -26,7 +26,7 @@
   <!--  Reorder function activated -->
 <ion-list [reorder]="reorderT"  (ionItemReorder)="Reorder($event)">
 <!-- looping through contactsArray item  -->
-  <ion-item-sliding *ngFor="let item of countriesArray | async   ; let i=index" (click)="detailContact(item, i)"  > 
+  <ion-item-sliding *ngFor="let item of countriesArray   ; let i=index" (click)="detailContact(item, i)"  > 
     <!-- display  Contact Name -->
         <ion-item>{{item.country}}- {{item.city}}</ion-item>
         <ion-item-options side="right">
