@@ -17,17 +17,12 @@ export class HomePage implements OnInit {
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
-    private toasCtrl: ToastController, private http:HttpClient) {  }
+    private toasCtrl: ToastController) {  }
 
 
   ngOnInit() {
-  this.http.get("/assets/countries.json")
-  .subscribe(
-    data=> {
-      this.countriesArray=data;
-      this.countRec=this.countriesArray.length;
-    }
-  )
+    
+    this.countRec= this.countriesArray.length;
   }
 
   aboutContacts() {
