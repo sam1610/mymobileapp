@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { ServiceProvider } from './../../providers/service/service';
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
+import { NavController, AlertController, reorderArray,
+  ToastController } from 'ionic-angular';
 import { DetailsPage } from '../details/details';
 
 @Component({
@@ -17,12 +18,16 @@ export class HomePage implements OnInit {
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
-    private toasCtrl: ToastController) {  }
-
+    private toasCtrl: ToastController,
+    private service:ServiceProvider) {  }
 
   ngOnInit() {
-    
-    this.countRec= this.countriesArray.length;
+  this.service.getData()
+  .subscribe(
+    data=> {
+      this.countriesArray=data;
+      this.countRec=this.countriesArray.length;
+    });
   }
 
   aboutContacts() {
@@ -38,6 +43,7 @@ export class HomePage implements OnInit {
       message: item.Name + " Contact Deleted",
       duration: 2000
     });
+    this.countRec=this.countriesArray.length;
     toast.present();
   }
   toggle() {
@@ -75,7 +81,7 @@ export class HomePage implements OnInit {
                 "city": newContact.City
               }
             );
-            this.countRec= this.countriesArray.length ;
+            this.countRec= this.countriesArray.length;
 
           }
         }
