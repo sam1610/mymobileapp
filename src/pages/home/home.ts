@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
     private service:ServiceProvider) {  }
 
   ngOnInit() {
-  this.service.getData()
+  this.service.getLocation()
   .subscribe(
     data=> {
       this.countriesArray=data;
@@ -33,10 +33,9 @@ export class HomePage implements OnInit {
   aboutContacts() {
     this.navCtrl.push(AboutPage);
   }
-  detailContact(item, i) {
-    console.log(item, i);
-    this.navCtrl.push(DetailsPage, { cte: item })
-  }
+  detailContact(item) {
+     this.navCtrl.push(DetailsPage, {cte:item});
+   }
   deleteContact(item, i) {
    this.countriesArray.splice(i, 1);
     let toast = this.toasCtrl.create({
@@ -88,5 +87,6 @@ export class HomePage implements OnInit {
       ]
     });
     addCte.present();
+    
   }
 }

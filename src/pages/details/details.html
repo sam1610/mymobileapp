@@ -1,12 +1,42 @@
-<!-- details.html -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title> Contact details</ion-title>
+    <ion-title>Weather Forecast</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-<ion-content padding>
- <h1> {{contactDetails.country}} . {{ contactDetails.city}}</h1>
+<ion-content padding class="home">
+ <ion-grid *ngIf="weather">
+   <ion-row>
+      <ion-col width-50 offset-25>
+          <h2 class="location">{{location.city}}</h2>
+        
+          <div class="icon" *ngFor="let item of weather?.weather" >
+            <img src="http://openweathermap.org/img/w/{{item.icon}}.png">
+            <h2> {{item.description}}</h2>
+          </div>
+          <h1 class="temp">{{weather?.main.temp}}&deg;</h1>
+      </ion-col>
+   </ion-row>
+   <ion-row>  
+     <ion-col width-100>
+        <ion-list>
+          <ion-item>
+            <strong> Temp:</strong>{{weather?.main.temp}}
+          </ion-item>
+          <ion-item>
+            <strong>  Humidity :</strong>{{weather?.main.humidity}}
+          </ion-item>
+          <ion-item>
+            <strong> Pressure:</strong>{{weather?.main.pressure}}
+          </ion-item>
+          <ion-item>
+            <strong> visibility:</strong>{{weather?.visibility}}
+          </ion-item>
+          <ion-item>
+            <strong> Wind Spped:</strong>{{weather?.wind.speed}}
+          </ion-item>
+        </ion-list>
+     </ion-col>
+   </ion-row>
+ </ion-grid>
 </ion-content>
