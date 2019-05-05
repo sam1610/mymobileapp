@@ -1,8 +1,7 @@
 // details.ts
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { ServiceProvider } from '../../providers/service/service';
-import { AnyARecord } from 'dns';
 @Component({
   selector: 'page-details',
   templateUrl: 'details.html',
@@ -10,7 +9,7 @@ import { AnyARecord } from 'dns';
 export class DetailsPage {
 location:any;
 weather:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private  service:ServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private  service:ServiceProvider, private toastCtrl:ToastController) {
 //notice that cte is the object key value trasmitted from home.ts 
 this.location=  this.navParams.data.cte ;
 console.log(this.location);
@@ -22,7 +21,21 @@ console.log(this.location);
  
         console.log(this.weather);
         
+      },
+      (err)=> {
+        let toast = this.toastCtrl.create({
+          message: this.location.city  + " dos not exist",
+          duration: 2000
+        });
+        toast.onDidDismiss(()=>
+         this.navCtrl.pop()
+        );
+        toast.present();
+        
       });
+
+
+
     }
  }
 

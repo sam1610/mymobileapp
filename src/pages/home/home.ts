@@ -39,15 +39,13 @@ export class HomePage implements OnInit {
   deleteContact(item, i) {
    this.countriesArray.splice(i, 1);
     let toast = this.toasCtrl.create({
-      message: item.Name + " Contact Deleted",
+      message: item.country + "-  city  Deleted",
       duration: 2000
     });
     this.countRec=this.countriesArray.length;
     toast.present();
   }
-  toggle() {
-    this.reorderT = !this.reorderT;
-  }
+
   Reorder($event) {
     reorderArray(this.countriesArray, $event)
   }

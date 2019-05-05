@@ -9,31 +9,30 @@
    <ion-row>
       <ion-col width-50 offset-25>
           <h2 class="location">{{location.city}}</h2>
-        
           <div class="icon" *ngFor="let item of weather?.weather" >
-            <img src="http://openweathermap.org/img/w/{{item.icon}}.png">
-            <h2> {{item.description}}</h2>
+            <img   src="http://openweathermap.org/img/w/{{item.icon}}.png">
+            <h3> {{item.description}}</h3>
           </div>
-          <h1 class="temp">{{weather?.main.temp}}&deg;</h1>
+          <h2 class="temp">{{weather?.main.temp}}&deg;</h2>
       </ion-col>
    </ion-row>
    <ion-row>  
-     <ion-col width-100>
+     <ion-col width-100 >
         <ion-list>
           <ion-item>
-            <strong> Temp:</strong>{{weather?.main.temp}}
+            <strong> Temp: </strong>{{weather?.main.temp}}
           </ion-item>
           <ion-item>
-            <strong>  Humidity :</strong>{{weather?.main.humidity}}
+            <strong>  Humidity: </strong>{{weather?.main.humidity}}
           </ion-item>
           <ion-item>
-            <strong> Pressure:</strong>{{weather?.main.pressure}}
+            <strong> Pressure: </strong>{{weather?.main.pressure}}
           </ion-item>
           <ion-item>
-            <strong> visibility:</strong>{{weather?.visibility}}
+            <strong> visibility: </strong>{{weather?.visibility}}
           </ion-item>
           <ion-item>
-            <strong> Wind Spped:</strong>{{weather?.wind.speed}}
+            <strong> Wind Spped: </strong>{{weather?.wind.speed}}
           </ion-item>
         </ion-list>
      </ion-col>
