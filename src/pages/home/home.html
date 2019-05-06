@@ -1,38 +1,22 @@
 <!-- home.html -->
 <ion-header>
+
   <ion-navbar>
-      <img [src]="flag" alt="kingdom Of Bahrain"   (click)="aboutContacts()">
+    <ion-title> User list </ion-title>
+  </ion-navbar>
 
-    <ion-title>
-
-      {{weaterApp}} 
-      <!-- toggle button to activate items reorder -->
-       <ion-icon name="flash"   [color]="reorderT? 'danger':'secondary'" (click)="reorderT=!reorderT" > </ion-icon>
-    </ion-title>
-    <!-- home.html -->
-    <ion-buttons end  >
-      <button  ion-button (click)=addCountry()>
-        <ion-icon  name="add" >
-            <ion-badge color ="danger"> {{ countRec }}</ion-badge>
-        </ion-icon>
-      </button>  
-    
-    </ion-buttons>
-    
-  </ion-navbar> 
 </ion-header>
 
+
 <ion-content padding>
-  <!--  Reorder function activated -->
-<ion-list [reorder]="reorderT"  (ionItemReorder)="Reorder($event)">
-<!-- looping through contactsArray item  -->
-  <ion-item-sliding *ngFor="let item of countriesArray  
-  ; let i=index" (click)="detailContact(item, i)"> 
-    <!-- display  Contact Name -->
-        <ion-item>{{item.country}}- {{item.city}}</ion-item>
-        <ion-item-options side="right">
-          <ion-icon name="trash" color="danger" (click)="deleteContact(item, i )"></ion-icon>
-        </ion-item-options>
-      </ion-item-sliding>
-</ion-list>
+  <ion-list>
+    <ion-item *ngFor="let user of users "   >
+      <h2>
+      	{{  user.login}} -  {{ user.type}}
+      </h2>
+      <ion-thumbnail slot="start">
+        <img src="{{user.avatar_url}}" >       
+      </ion-thumbnail><p (click)="detail(user.subscriptions_url)"> ...more</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

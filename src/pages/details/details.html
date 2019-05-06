@@ -2,11 +2,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title> Location details</ion-title>
+    <ion-title> User details</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
- <h1> {{locationDetails.country}} . {{ locationDetails.city}}</h1>
+   <ion-item *ngFor="let item of subscriptions "  text-wrap>
+     {{item.description}} - created on {{ item.created_at}}
+   </ion-item>
 </ion-content>
