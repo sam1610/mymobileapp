@@ -2,9 +2,7 @@
 <ion-header>
   <ion-navbar>
       <img [src]="flag" alt="kingdom Of Bahrain"   (click)="aboutContacts()">
-
     <ion-title>
-
       {{weaterApp}} 
       <!-- toggle button to activate items reorder -->
        <ion-icon name="flash"   [color]="reorderT? 'danger':'secondary'" (click)="reorderT=!reorderT" > </ion-icon>
@@ -13,12 +11,10 @@
     <ion-buttons end  >
       <button  ion-button (click)=addCountry()>
         <ion-icon  name="add" >
-            <ion-badge color ="danger"> {{countriesArray$ | async}}?.length</ion-badge>
+            <ion-badge color ="danger"> {{ countriesArray?.length }}</ion-badge>
         </ion-icon>
-      </button> 
-    
+    </button> 
     </ion-buttons>
-    
   </ion-navbar> 
 </ion-header>
 
@@ -26,7 +22,7 @@
   <!--  Reorder function activated -->
 <ion-list [reorder]="reorderT"  (ionItemReorder)="Reorder($event)">
 <!-- looping through contactsArray item  -->
-  <ion-item-sliding *ngFor="let item of countriesArray$ | async ; let i=index" (click)="detailContact(item, i)"  > 
+  <ion-item-sliding *ngFor="let item of countriesArray ; let i=index" (click)="detailContact(item, i)"  > 
     <!-- display  Contact Name -->
         <ion-item>{{item.country}}- {{item.city}}</ion-item>
         <ion-item-options side="right">

@@ -1,3 +1,4 @@
+import { DataProvider } from './../../providers/data/data';
 import { HttpClient } from '@angular/common/http';
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
@@ -17,12 +18,13 @@ export class HomePage implements OnInit {
   countRec:number;
   constructor(public navCtrl: NavController,
     private alertCtrl: AlertController,
-    private toasCtrl: ToastController) {  }
+    private toasCtrl: ToastController, private dataSrv: DataProvider) {  }
 
 
   ngOnInit() {
-    
-    this.countRec= this.countriesArray.length;
+       this.dataSrv.getCountries().subscribe(
+         data=> this.countriesArray=data
+       ) ;
   }
 
   aboutContacts() {
