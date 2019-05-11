@@ -1,5 +1,5 @@
 import { DetailsPage } from './../details/details';
-import { GitProvider } from './../../providers/git/git';
+import { ServiceProvider } from '../../providers/git/serviceProvider';
 
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -10,10 +10,10 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage implements OnInit {
   users: any;
-  constructor(private userSrv: GitProvider, private navCtrl: NavController) { }
+  constructor(private service: ServiceProvider, private navCtrl: NavController) { }
 
   ngOnInit() {
-    return this.userSrv.getUser()
+    return this.service.getUser()
       .subscribe(
         data => {
           this.users = data;

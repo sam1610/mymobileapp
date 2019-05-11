@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpClientModule } from '@angular/common/http';
-import { GitProvider } from '../providers/git/git';
+import { ServiceProvider } from '../providers/git/serviceProvider';
 @NgModule({
   declarations: [
     MyApp,
@@ -28,7 +28,7 @@ import { GitProvider } from '../providers/git/git';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GitProvider
+    ServiceProvider
   ]
 })
 export class AppModule {}

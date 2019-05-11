@@ -9,6 +9,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class DetailsPage {
   subscriptions:any
   constructor( public navParams: NavParams, private http:HttpClient) {
+    console.log(this.navParams.get('item'));
   //notice that cte is the object key value trasmitted from home.ts 
   this.http.get(this.navParams.data.item).subscribe(
     data=> this.subscriptions= data )}
