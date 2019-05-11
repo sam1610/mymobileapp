@@ -8,8 +8,7 @@ export class ServiceProvider {
   parameters = '&units=metric&appid=';
   apiKey = 'a3eae44c26370088bab40caa93a7ad68';
 
-  constructor(public http: HttpClient) {
-    console.log('Hello ServiceProvider Provider');}
+  constructor(public http: HttpClient) {}
   getLocation(){
     return this.http.get(this.ApiUrl);
   }
