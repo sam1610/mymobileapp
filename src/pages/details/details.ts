@@ -9,7 +9,7 @@ export class DetailsPage {
 contactDetails:any
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //notice that cte is the object key value trasmitted from home.ts 
-this.contactDetails=  this.navParams.data.cte ;
+this.contactDetails=  this.navParams.get("cte") ;
 console.log(this.contactDetails);
 
   }
