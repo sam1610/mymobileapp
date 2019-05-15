@@ -1,5 +1,4 @@
 import { DataProvider } from './../../providers/data/data';
-import { HttpClient } from '@angular/common/http';
 import { AboutPage } from './../about/about';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
