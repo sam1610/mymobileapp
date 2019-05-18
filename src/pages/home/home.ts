@@ -33,9 +33,11 @@ export class HomePage implements OnInit {
   aboutContacts() {
     this.navCtrl.push(AboutPage);
   }
-  detailContact(item) {
+
+  detailLocation(item) {
      this.navCtrl.push(DetailsPage, {cte:item});
    }
+   
   deleteContact(item, i) {
    this.countriesArray.splice(i, 1);
     let toast = this.toasCtrl.create({
@@ -51,8 +53,8 @@ export class HomePage implements OnInit {
   }
   addCountry() {
     let addCte = this.alertCtrl.create({
-      title: "add Contact",
-      message: "Enter a New Contact Here",
+      title: "add Location",
+      message: "Enter a New Location Here",
       inputs: [
         {
           type: "text",

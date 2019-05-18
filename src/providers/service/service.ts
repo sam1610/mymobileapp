@@ -16,7 +16,7 @@ export class ServiceProvider {
   getWeather(city) {
     console.log(this.weatherAPI + city + this.parameters + this.apiKey);
     return this.http.get(this.weatherAPI + city + this.parameters + this.apiKey);
-  }
+  } 
 
 
 

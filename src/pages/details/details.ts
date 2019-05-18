@@ -14,8 +14,8 @@ weather:any;
 this.location=  this.navParams.data.cte ;
 console.log(this.location);
 
-  
-    this.service.getWeather(this.location.city + "," + this.location.country)
+
+this.service.getWeather(this.location.city + "," + this.location.country)
       .subscribe(data => {
         this.weather = data;
  
@@ -24,18 +24,13 @@ console.log(this.location);
       },
       (err)=> {
         let toast = this.toastCtrl.create({
-          message: this.location.city  + " dos not exist",
+          message: this.location.city + " dos not exist",
           duration: 2000
         });
         toast.onDidDismiss(()=>
-         this.navCtrl.pop()
-        );
-        toast.present();
-        
-      });
+         this.navCtrl.pop()       );
+        toast.present();       });        
+      };
 
-
-
-    }
  }
 
